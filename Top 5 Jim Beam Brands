@@ -1,0 +1,17 @@
+SELECT
+  SUM(bottles_sold) as total_sold,
+  ##UPPER(county) as counties,
+  UPPER(category_name) as Liquor_category
+ 
+FROM `bigquery-public-data.iowa_liquor_sales.sales` 
+ 
+WHERE
+vendor_name ="Jim Beam Brands" bottles_sold > 0 AND county <> "Null" AND category_name <> "Null"  AND county <> " " AND category_name <> " "
+ 
+GROUP BY
+  Liquor_category
+  
+ORDER BY
+  total_sold DESC
+ 
+LIMIT 5
